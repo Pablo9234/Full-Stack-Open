@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 export function Contadores() {
+
     const [clicks, setClicks] = useState({
         left: 0,
         right: 0
@@ -27,6 +28,7 @@ export function Contadores() {
             <ButtonLeft clicks={clicks.left} onClick={handleClickLeft} />
             <ButtonRight clicks={clicks.right} onClick={handleClickRight} />
             <Contador allClicks={allClicks} total={total} />
+            <History allClicks = {allClicks} />
         </div>
     );
 }
@@ -69,3 +71,19 @@ function Title(){
         </>
     )
 }
+
+const History = (props) => {
+    if (props.allClicks.length === 0) {
+      return (
+        <div>
+          the app is used by pressing the buttons
+        </div>
+      )
+    }
+  
+    return (
+      <div>
+        button press history: {props.allClicks.join(' ')}
+      </div>
+    )
+  }
