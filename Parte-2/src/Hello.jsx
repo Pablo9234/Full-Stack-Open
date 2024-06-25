@@ -23,16 +23,17 @@ export function Contadores() {
 
     return (
         <div>
-            <Contador allClicks={allClicks} total={total} />
+            <Title/>
             <ButtonLeft clicks={clicks.left} onClick={handleClickLeft} />
             <ButtonRight clicks={clicks.right} onClick={handleClickRight} />
+            <Contador allClicks={allClicks} total={total} />
         </div>
     );
 }
 
 function Contador({total}) {
     return (
-        <div>
+        <div className="total">
             <p>Total {total}</p>
         </div>
     );
@@ -40,7 +41,7 @@ function Contador({total}) {
 
 function ButtonLeft({ clicks, onClick }) {
     return (
-        <div>
+        <div className="container">
             {clicks}
             <button onClick={onClick}>
                 Left
@@ -51,11 +52,20 @@ function ButtonLeft({ clicks, onClick }) {
 
 function ButtonRight({ clicks, onClick }) {
     return (
-        <div>
+        <div className="container">
             {clicks}
             <button onClick={onClick}>
                 Right
             </button>
         </div>
     );
+}
+function Title(){
+    return(
+        <>
+            <h1>
+                Buttons
+            </h1>
+        </>
+    )
 }
