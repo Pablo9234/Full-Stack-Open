@@ -1,4 +1,4 @@
-import { Hello } from "./Hello"
+import {Contadores} from "./Hello"
 
 export function App(){
 
@@ -9,7 +9,8 @@ export function App(){
 
   return(
     <>
-    <Hello {...props}/>
+    <Contadores/>
+   
     </>
   )
 }
