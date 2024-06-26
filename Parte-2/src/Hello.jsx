@@ -26,13 +26,13 @@ export function Notes() {
 
     const handleBad = () =>{
         const newVotes = {...votes}
-        newVotes.bad += 1
+        newVotes[note].bad += 1
         setVotes(newVotes)
     }
 
     const handleNeutral = () =>{
         const newVotes = {...votes}
-        newVotes.neutral += 1
+        newVotes[note].neutral += 1
         setVotes(newVotes)
     }
 
