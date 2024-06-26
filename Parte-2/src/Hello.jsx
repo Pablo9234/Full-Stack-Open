@@ -1,67 +1,64 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export function Buttons(){
+export function Notes() {
 
-   const [buttonLike,setButtonLike] = useState({like:0, dontLike:0, idkLike: 0})
-   const [allClicks,SettAllClicks] = useState(0)
-   const [win,setWinner] = useState(null)
-   const [avarege,setAverage] = useState(0)
+    const anecdotes = [
+        "If it hurts, do it more often.",
+        "Adding manpower to a late software project makes it later!",
+        "The first 90 percent of the code accounts for the first 10 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
+        "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+        "Premature optimization is the root of all evil.",
+        "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
+        "Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.",
+        "The only way to go fast, is to go well.",
+    ];
 
-   const handleLike = () => {
-    setButtonLike(prevLikes => ({...prevLikes, like: prevLikes.like + 1}))
-    SettAllClicks(prevTotal => prevTotal + 1)
-   }
+    const initialVotes = anecdotes.map(() => ({ good: 0, neutral: 0, bad: 0})); //Creo un arreglo de objetos para poder tener los votos de cada nota de manera individual
+    const [note, setNote] = useState(0);
+    const [votes,setVotes] = useState(initialVotes)
 
-   const handleDontLike = () =>{
-    setButtonLike(prevLikes => ({...prevLikes, dontLike: prevLikes.dontLike +1}))
-    SettAllClicks(prevTotal => prevTotal + 1)
-   }
 
-   const handleIdkLike = () =>{
-    setButtonLike(prevLikes => ({...prevLikes, idkLike: prevLikes.idkLike + 1}))
-    SettAllClicks(prevTotal => prevTotal + 1)
-   }
-   
-   const winNotes = () => {
-    const { like, dontLike, idkLike } = buttonLike;
-        
-
-    if (like > dontLike && like > idkLike) {
-        setWinner('Me gusta');
-    } else if (dontLike > like && dontLike > idkLike) {
-        setWinner('No me gusta');
-    } else if (idkLike > like && idkLike > dontLike) {
-        setWinner('Enmedio');
-    } else {
-        setWinner('Empate'); 
+    const handleLike=()=>{
+        const newVotes = {...votes} // Hago una copia del arreglo de para poder manejar el estado de manera individual
+        newVotes[note].good += 1;
+        setVotes(newVotes)
     }
-   }
+
+    const handleBad = () =>{
+        const newVotes = {...votes}
+        newVotes.bad += 1
+        setVotes(newVotes)
+    }
+
+    const handleNeutral = () =>{
+        const newVotes = {...votes}
+        newVotes.neutral += 1
+        setVotes(newVotes)
+    }
 
 
+    const randonNumber = () => {
+        const aleatorio = Math.floor(Math.random() * anecdotes.length)  //Ayuda a generar un numero aleatorio para poder cambiar de nota
+        setNote(aleatorio)
+    };
 
+    return <>
+    <h1>Give feedback</h1>
+    <p>
+        {anecdotes[note]}
+    </p>
 
-    return(
-        <>
-        <h1>
-            Give feedback
-        </h1>
-        <button onClick={handleLike}>
-            Good
-        </button>
-        <button onClick={handleIdkLike}>
-            Neutral
-        </button>
-        <button onClick={handleDontLike}>
-            Bad
-        </button>
-        <h2>
-            Statistics:
-        </h2>
-        <p>Good: {buttonLike.like}</p>
-        <p>Neutral: {buttonLike.idkLike}</p>
-        <p>Bad: {buttonLike.dontLike}</p>
-        <p>All: {allClicks}</p>
-        </>
-    )
+        <button onClick={randonNumber}>Siguiente Nota</button> {/*Da paso a la siguiente nota */}
 
+        <h2>Votar</h2>
+        <button onClick={handleLike}>Good</button>
+            <button onClick={handleNeutral}>Neutral</button>
+            <button onClick={handleBad}>Bad</button>
+
+            <h2>Statistics:</h2>
+
+            <p>Good: {votes[note].good}</p>
+            <p>Neutral: {votes[note].neutral}</p>
+            <p>Bad: {votes[note].bad}</p>
+    </>
 }

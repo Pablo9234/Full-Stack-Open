@@ -1,10 +1,10 @@
-import {Buttons} from "./Hello"
+import { Notes} from "./Hello"
 
 export function App(){
 
   return(
     <>
-    <Buttons/>
+    <Notes/>
     </>
   )
 }

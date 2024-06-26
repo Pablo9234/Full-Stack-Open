@@ -29,11 +29,6 @@ button{
     cursor: pointer;
     border: none;
 }
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .total{
     text-align: center;
 }
@@ -44,4 +39,7 @@ button:hover{
     color:white; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     
+}
+h2{
+    text-align: center;
 }
