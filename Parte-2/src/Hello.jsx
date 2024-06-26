@@ -33,7 +33,7 @@ export function Notes() {
 
     const allAVotes = () => {
         let maxVotes = 0;
-        let mostVotedIndex = 0;
+        let mostVotedIndex = -1;
 
         votes.forEach((vote, index) => {
             const totalVotes = vote.good;
@@ -41,8 +41,13 @@ export function Notes() {
                 maxVotes = totalVotes;
                 mostVotedIndex = index;
             }
+           
         });
 
+        if (mostVotedIndex === -1 || maxVotes === 0) {
+            return "Empty";
+        }
+        
         return anecdotes[mostVotedIndex];
     };
     
