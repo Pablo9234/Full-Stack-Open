@@ -14,51 +14,53 @@ export function Notes() {
     ];
 
     const initialVotes = anecdotes.map(() => ({ good: 0, neutral: 0, bad: 0})); //Creo un arreglo de objetos para poder tener los votos de cada nota de manera individual
-    const [note, setNote] = useState(0);
-    const [votes,setVotes] = useState(initialVotes)
+    const [note, setNote] = useState(0); //Cambia el estado segun la nota que este seleccionada
+    const [votes,setVotes] = useState(initialVotes); //Lleva el control de cada voto en cada seccion del estado
 
 
-    const handleLike=()=>{
-        const newVotes = {...votes} // Hago una copia del arreglo de para poder manejar el estado de manera individual
-        newVotes[note].good += 1;
-        setVotes(newVotes)
-    }
 
-    const handleBad = () =>{
-        const newVotes = {...votes}
-        newVotes[note].bad += 1
-        setVotes(newVotes)
-    }
-
-    const handleNeutral = () =>{
-        const newVotes = {...votes}
-        newVotes[note].neutral += 1
-        setVotes(newVotes)
-    }
-
+    const handleLike = () => {
+        const newVotes = votes.map((vote, index) => 
+            index === note ? { ...vote, good: vote.good + 1 } : vote
+        );
+        setVotes(newVotes);
+    };
 
     const randonNumber = () => {
         const aleatorio = Math.floor(Math.random() * anecdotes.length)  //Ayuda a generar un numero aleatorio para poder cambiar de nota
         setNote(aleatorio)
+    }
+
+    const allAVotes = () => {
+        let maxVotes = 0;
+        let mostVotedIndex = 0;
+
+        votes.forEach((vote, index) => {
+            const totalVotes = vote.good;
+            if (totalVotes > maxVotes) {
+                maxVotes = totalVotes;
+                mostVotedIndex = index;
+            }
+        });
+
+        return anecdotes[mostVotedIndex];
     };
+    
 
     return <>
+    <div className="card">
     <h1>Give feedback</h1>
     <p>
         {anecdotes[note]}
     </p>
-
-        <button onClick={randonNumber}>Siguiente Nota</button> {/*Da paso a la siguiente nota */}
-
-        <h2>Votar</h2>
+    <div className="feedback">
+    <button onClick={randonNumber}>Next Note</button> {/*Da paso a la siguiente nota */}
         <button onClick={handleLike}>Good</button>
-            <button onClick={handleNeutral}>Neutral</button>
-            <button onClick={handleBad}>Bad</button>
-
-            <h2>Statistics:</h2>
-
-            <p>Good: {votes[note].good}</p>
-            <p>Neutral: {votes[note].neutral}</p>
-            <p>Bad: {votes[note].bad}</p>
+            <h2>More voted</h2>
+            <p>{allAVotes()}</p>
+            Votes {votes[note].good}
+            </div>
+    </div>
+     
     </>
 }

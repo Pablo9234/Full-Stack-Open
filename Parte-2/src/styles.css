@@ -43,3 +43,13 @@ button:hover{
 h2{
     text-align: center;
 }
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.feedback{
+    text-align: center;
+    padding: 10px;
+}
