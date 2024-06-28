@@ -14,7 +14,7 @@ export function Notes() {
     ];
 
     const initialVotes = anecdotes.map(() => ({ good: 0, neutral: 0, bad: 0})); //Creo un arreglo de objetos para poder tener los votos de cada nota de manera individual
-    const [note, setNote] = useState(0); //Cambia el estado segun la nota que este seleccionada
+    const [note, setNote] = useState(0); //Cambia el estado a el index de la nota que este seleccionada
     const [votes,setVotes] = useState(initialVotes); //Lleva el control de cada voto en cada seccion del estado
 
 
@@ -51,7 +51,6 @@ export function Notes() {
         return anecdotes[mostVotedIndex];
     };
     
-
     return <>
     <div className="card">
     <h1>Give feedback</h1>
