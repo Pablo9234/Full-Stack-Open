@@ -1,0 +1,78 @@
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: rgb(151,156,157);
+    background: linear-gradient(90deg, rgba(151,156,157,1) 15%, rgba(91,91,91,1) 45%, rgba(66,66,66,0.9976365546218487) 80%);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+li {
+    margin: 10px;
+    font-size: 1.2rem;
+    color: #444;
+}
+
+button {
+    padding: 10px 30px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 2px solid #333;
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+   
+    font-weight: bold;
+    transition: all ease 0.3s;
+}
+
+button:hover {
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+input {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 2px solid #333;
+    font-size: 1rem;
+    width: calc(100% - 60px);
+    box-sizing: border-box;
+}
+
+.card {
+    padding: 40px;
+    width: 600px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    text-align:start;
+}
+
+.card form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card ul {
+    width: 100%;
+    padding: 0;
+}
