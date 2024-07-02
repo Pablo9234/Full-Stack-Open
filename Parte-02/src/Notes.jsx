@@ -12,7 +12,7 @@ export function Notes({ notes }) {
     const noteToShow = showAll
         ? note
         : note.filter(note => note.important === true)
-
+    
     const addNote = (event) => {
         event.preventDefault()         //Evita que se recargue la pagina el evento prederminado de un form
         const noteObject = {
