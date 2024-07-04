@@ -8,19 +8,20 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background: rgb(151,156,157);
     background: linear-gradient(90deg, rgba(151,156,157,1) 15%, rgba(91,91,91,1) 45%, rgba(66,66,66,0.9976365546218487) 80%);
+    display: grid;
 }
 
-h1 {
+h1,h2 {
     text-align: center;
-    color: #333;
+    color: black;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-li {
-    margin: 10px;
+li{
+    list-style: none;
     font-size: 1.2rem;
-    color: #444;
+    color: black;
 }
 
 button {
@@ -72,7 +73,13 @@ input {
     align-items: center;
 }
 
-.card ul {
-    width: 100%;
-    padding: 0;
+.contacts{
+   
+    justify-content: center;
+    font-size: large;
 }
+ .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }

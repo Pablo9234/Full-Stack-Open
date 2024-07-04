@@ -1,29 +1,20 @@
-import { Notes } from "./Notes"
+import './styles.css';
+import { Phonebook } from './PhoneBook';
 
-const notes = [
-  {
-    id: 1,
-    content: 'HTML is easy',
-    important: true
-  },
-  {
-    id: 2,
-    content: 'Browser can execute only JavaScript',
-    important: false
-  },
-  {
-    id: 3,
-    content: 'GET and POST are the most important methods of HTTP protocol',
-    important: true
-  }
-]
+const people = [
+  { name: "John", number: 5634563210 },
+  { name: "Jane", number: 5634567101},
+  { name: "Alice", number: 87901234 },
+  { name: "Bob" , number: 67890965 },
+  { name: "Charlie", number: 89017845 }
+];
 
 
 export function App() {
   return (
     <>
-      <Notes
-      notes = {notes}/>
+     <Phonebook
+     people = {people}/>
     </>
   )
 }
